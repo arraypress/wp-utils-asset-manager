@@ -1,0 +1,15 @@
+{
+  "name": "arraypress/wp-utils-asset-manager",
+  "description": "A comprehensive WordPress library designed to enhance asset management. It provides a robust Asset_Manager class for registering, enqueueing, and managing scripts and styles with precision across WordPress front-end and admin interfaces. This utility facilitates optimal asset loading with support for dependencies, versioning, conditional loading, and error handling, streamlining asset workflow for developers.",
+  "type": "library",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "stable",
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "ArrayPress\\Utils\\WP\\": "src/"
+    },
+    "files": ["src/Functions.php"]
+  }
+}
