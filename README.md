@@ -44,35 +44,35 @@ To register scripts for use within WordPress, you can define an array of script 
 
 ```php
 // Require vendor libraries
-require_once dirname(__FILE__) . '/vendor/autoload.php';
+require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 
 // Define scripts to be registered
 $scripts = [
-    [
-        'handle'   => 'my-custom-script',
-        'src'      => 'my-custom-script.js',
-        'deps'     => [ 'jquery' ],  // Dependency on jQuery
-        'version'  => '1.0.0', 
-        'in_footer'=> true,
-        'localize' => [
-            'ajax_url' => admin_url( 'admin-ajax.php' )  // Localizing script
-        ],
-    ],
-    // ... additional script definitions
+	[
+		'handle'    => 'my-custom-script',
+		'src'       => 'my-custom-script.js',
+		'deps'      => [ 'jquery' ],  // Dependency on jQuery
+		'version'   => '1.0.0',
+		'in_footer' => true,
+		'localize'  => [
+			'ajax_url' => admin_url( 'admin-ajax.php' )  // Localizing script
+		],
+	],
+	// ... additional script definitions
 ];
 
 // Optional default arguments
 $default_args = [
-    'scope'         => 'frontend',  // Frontend only
-	'script_path'   => plugins_url( 'assets/js/', __FILE__ ), // Set the default script path
-	'style_path'    => plugins_url( 'assets/css/', __FILE__ ), // Set the default style path
-    // ... other default arguments
+	'scope'       => 'frontend',  // Frontend only
+	'script_path' => plugins_url( 'assets/js/', __FILE__ ), // Set the default script path
+	'style_path'  => plugins_url( 'assets/css/', __FILE__ ), // Set the default style path
+	// ... other default arguments
 ];
 
 // Register the scripts
 register_scripts( $scripts, $default_args, function ( Exception $e ) {
-    error_log('Error registering scripts: ' . $e->getMessage());
-});
+	error_log( 'Error registering scripts: ' . $e->getMessage() );
+} );
 ```
 
 ### Registering Styles
@@ -82,36 +82,36 @@ To register styles for use within WordPress, you can define an array of style de
 ```php
 // Define scripts to be registered
 $styles = [
-    [
-        'handle'   => 'my-custom-style',
-        'src'      => 'my-custom-style.css',
-        'callback' => function() {
-            // Only load this style on the homepage or a specific page ID (e.g., page ID 42)
-            return is_front_page() || is_page( 42 );
-        }
-    ],
-        [
-        'handle'   => 'my-primary-style',
-        'src'      => 'my-primary-style.css',
-        'callback' => function() {
-            // Only load this style on the homepage or a specific page ID (e.g., page ID 42)
-            return is_front_page() || is_page( 42 );
-        }
-    ],
-    // ... additional style definitions
+	[
+		'handle'   => 'my-custom-style',
+		'src'      => 'my-custom-style.css',
+		'callback' => function () {
+			// Only load this style on the homepage or a specific page ID (e.g., page ID 42)
+			return is_front_page() || is_page( 42 );
+		}
+	],
+	[
+		'handle'   => 'my-primary-style',
+		'src'      => 'my-primary-style.css',
+		'callback' => function () {
+			// Only load this style on the homepage or a specific page ID (e.g., page ID 42)
+			return is_front_page() || is_page( 42 );
+		}
+	],
+	// ... additional style definitions
 ];
 
 // Optional default arguments
 $default_args = [
-    'scope' => 'frontend',  // Frontend only
-    'style_path' => plugins_url( 'assets/css/', __FILE__ ), // Set the default style path
-    // ... other default arguments
+	'scope'      => 'frontend',  // Frontend only
+	'style_path' => plugins_url( 'assets/css/', __FILE__ ), // Set the default style path
+	// ... other default arguments
 ];
 
 // Register the scripts
 register_styles( $styles, $default_args, function ( Exception $e ) {
-    error_log( 'Error registering styles: ' . $e->getMessage() );
-});
+	error_log( 'Error registering styles: ' . $e->getMessage() );
+} );
 ```
 
 ## Contributions
